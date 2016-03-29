@@ -1,4 +1,11 @@
 <div class="pages home">
+  <%= flash_messages %>
   <div id="wrapper">
+    <% if @user.new_record? %>
+      <%= render "signup" %>
+      <%= render "signin" %>
+    <% else %>
+      <%= render "signout" %>
+    <% end %>
   </div>
 </div>

@@ -1,0 +1,9 @@
+<h4>用户登陆</h4>
+
+<%= form_for @user, url: sessions_path, html: {class: "signup_form"} do |f| %>
+  <%= f.label "用户名" %>
+  <%= f.text_field :username %>
+  <%= f.label "密码" %>
+  <%= f.password_field :password %>
+  <%= f.submit "登陆" %>
+<% end %>
