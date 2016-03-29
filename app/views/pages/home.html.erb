@@ -4,8 +4,17 @@
     <% if @user.new_record? %>
       <%= render "signup" %>
       <%= render "signin" %>
+
+      <div class="not-signed-in" data-stranger-id=<%= @stranger.uuid %>>
+        <p>你好，陌生人！你没有登录，或者你还没有注册，但是你已经浏览这个页面 {{ duration }} 分钟了。</p>
+      </div>
     <% else %>
       <%= render "signout" %>
+
+      <div class="signed-in" data-user-id=<%= @user.id %>>
+        <p>{{ user.username }} 谢谢你登录了我们网站！你已经登录了 {{ user.login_count }} 次了，总共登录时间是 {{ duration }} 分钟了。</p>
+      </div>
+
     <% end %>
   </div>
 </div>

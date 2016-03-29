@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
-  resources :users, only: [:new, :create]
+  get 'strangers/show'
+
+  resources :users, only: [:new, :create, :show] do
+    member do
+      put :stay
+    end
+  end
+
+  resources :strangers, only: [:show] do
+    member do
+      put :stay
+    end
+  end
+
   resources :sessions, only: [:new, :create, :destroy]
   root 'pages#home'
 end

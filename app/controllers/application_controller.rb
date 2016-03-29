@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
 
   def sign_in(user)
     raise "invalid signin user" unless user && user.valid? && !user.new_record?
+    user.count_login
     session[:current_user_id] = user.id
   end
 
