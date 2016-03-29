@@ -14,7 +14,11 @@
       <div class="signed-in" data-user-id=<%= @user.id %>>
         <p>{{ user.username }} 谢谢你登录了我们网站！你已经登录了 {{ user.login_count }} 次了，总共登录时间是 {{ duration }} 分钟了。</p>
       </div>
-
     <% end %>
+
+    <p>
+      现在总共有 {{ online_users_count }} 个注册用户在查看这个网站，有 {{ online_strangers_count }} 个陌生人在查看这个网站
+    </p>
+
   </div>
 </div>

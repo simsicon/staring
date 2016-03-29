@@ -14,4 +14,9 @@ class PagesController < ApplicationController
       end
     end
   end
+
+  def status
+    @online_users = User.where("last_stay_at > ?", 3.minutes.ago)
+    @online_strangers = Stranger.where("last_stay_at > ?", 3.minutes.ago)
+  end
 end

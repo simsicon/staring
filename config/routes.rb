@@ -13,6 +13,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :pages, only: [] do
+    collection do
+      get "status"
+    end
+  end
+
   resources :sessions, only: [:new, :create, :destroy]
   root 'pages#home'
 end

@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
 
   def stay
     _duration = self.login_duration + 1
-    update_attributes login_duration: _duration
+    update_attributes login_duration: _duration, last_stay_at: Time.now
   end
 end

@@ -14,6 +14,8 @@ $ ->
         stranger:
           uuid: null
         duration: -1
+        online_users_count: -1
+        online_strangers_count: -1
       methods:
         update_duration: () ->
           this.duration = this.duration + 1
@@ -27,6 +29,10 @@ $ ->
             url: url
           ).done (data) =>
             console.log "success"
+
+          $.getJSON "/pages/status.json", (json) =>
+            this.online_users_count = json.online_users_count
+            this.online_strangers_count = json.online_strangers_count
 
         async_user: () ->
           _id  = this.user.id || this.stranger.id
@@ -53,6 +59,8 @@ $ ->
         else
           this.stranger.uuid = document.cookie.replace(/(?:(?:^|.*;\s*)stranger_id\s*\=\s*([^;]*).*$)|^.*$/, "$1")
           this.async_stranger()
+
+        this.update_duration()
 
         setInterval( () =>
           this.update_duration()
